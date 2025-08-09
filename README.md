@@ -8,6 +8,7 @@ Neste repositório, serão adicionados todos os arquivos das atividades realizad
 ## Índice
 
 - [Aula 1](#aula1)
+    Nessa aula nós aprendemos a usar o github e subimos os arquivos das práticas
 - [Aula 2](#aula2)
 
 ## Instalação
