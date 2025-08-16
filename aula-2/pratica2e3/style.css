@@ -1,0 +1,20 @@
+#cassio {
+    width:auto;
+    height:300px
+}
+
+header{
+    text-align: center;
+}
+
+footer{
+    text-align: center;
+}
+
+footer span{
+    margin-left: 100px
+}
+
+footer a{
+    margin-left: 100px
+}
