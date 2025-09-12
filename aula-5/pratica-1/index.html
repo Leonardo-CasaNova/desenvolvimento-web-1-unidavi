@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Simples</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="calculadora">
+        <h1>Calculadora Simples</h1>
+        
+        <div>
+            <input type="number" id="numero1" placeholder="Número 1">
+            <input type="number" id="numero2" placeholder="Número 2">
+        </div>
+        
+        <div>
+            <button onclick="calcular('+')">+</button>
+            <button onclick="calcular('-')">-</button>
+            <button onclick="calcular('*')">×</button>
+            <button onclick="calcular('/')")>÷</button>
+        </div>
+        
+        <div id="resultado">Resultado aparecerá aqui</div>
+        
+        <button class="limpar-btn" onclick="limpar()">Limpar</button>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+body {
+    font-family: Arial;
+    text-align: center;
+    margin-top: 30px;
+    background-color: #e0e0e0;
+}
+
+.calculadora {
+    display: inline-block;
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 3px solid #666;
+    border-radius: 5px;
+}
+
+h1 {
+    color: #444;
+    margin-bottom: 15px;
+    font-size: 24px;
+}
+
+input {
+    padding: 8px;
+    margin: 5px;
+    font-size: 14px;
+    width: 100px;
+    text-align: center;
+    border: 2px solid #888;
+    border-radius: 3px;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border: 2px solid #666;
+    border-radius: 3px;
+    background-color: #ddd;
+}
+
+button:hover {
+    background-color: #ccc;
+}
+
+.limpar-btn {
+    background-color: #bbb;
+    color: black;
+    border-color: #666;
+    margin-top: 10px;
+}
+
+.limpar-btn:hover {
+    background-color: #aaa;
+}
+
+#resultado {
+    padding: 15px;
+    margin: 15px auto;
+    font-size: 18px;
+    font-weight: bold;
+    border: 2px solid #666;
+    border-radius: 3px;
+    min-height: 20px;
+    line-height: 20px;
+    background-color: #eee;
+}
+
+.negativo {
+    background-color: red;
+    color: white;
+    border-color: red;
+}
+
+.positivo {
+    background-color: green;
+    color: white;
+    border-color: green;
+}
+
+.zero {
+    background-color: gray;
+    color: white;
+    border-color: gray;
+}
