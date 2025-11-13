@@ -1,17 +1,11 @@
 <?php
-/**
- * Página principal - Formulário de Avaliação
- * Sistema de Avaliação de Qualidade de Serviços Prestados
- */
 
 require_once __DIR__ . '/../config.php';
 require_once __DIR__ . '/../src/perguntas.php';
 require_once __DIR__ . '/../src/funcoes.php';
 
-// Buscar perguntas ativas do banco de dados
 $perguntas = buscarPerguntasAtivas();
 
-// Se não houver perguntas, mostrar mensagem
 if (empty($perguntas)) {
     die("Nenhuma pergunta cadastrada no sistema.");
 }
@@ -70,7 +64,6 @@ $escalaMaxima = ESCALA_MAXIMA;
                     </div>
                 <?php endforeach; ?>
 
-                <!-- Pergunta aberta para feedback adicional -->
                 <div class="feedback-container">
                     <label for="feedback">
                         Tem algum comentário ou sugestão adicional? (Opcional)

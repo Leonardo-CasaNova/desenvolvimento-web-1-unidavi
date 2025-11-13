@@ -1,301 +1,115 @@
-/**
- * Estilos do Sistema de Avaliação
- */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f6f8;
+    color: #1f2937;
     padding: 20px;
 }
 
 .container {
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    max-width: 800px;
-    width: 100%;
-    padding: 40px;
-    margin: 20px auto;
+    max-width: 840px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+.header { text-align: center; margin-bottom: 24px; }
+.header h1 { font-size: 1.8rem; margin-bottom: 6px; }
+.header p { color: #6b7280; }
 
-.header h1 {
-    color: #333;
-    font-size: 2em;
-    margin-bottom: 10px;
-}
-
-.header p {
-    color: #666;
-    font-size: 1.1em;
-}
-
-.formulario-avaliacao {
-    margin-bottom: 30px;
-}
+.formulario-avaliacao { margin-bottom: 20px; }
 
 .pergunta-container {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-left: 4px solid #667eea;
+    background: #f9fafb;
+    border-left: 4px solid #4f46e5; /* indigo-600 */
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
 }
 
-.pergunta-texto {
-    font-size: 1.2em;
-    color: #333;
-    margin-bottom: 20px;
-    font-weight: 500;
-}
+.pergunta-texto { margin-bottom: 10px; font-weight: 600; }
 
-.escala-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.escala-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1;
-    min-width: 50px;
-}
-
-.escala-item input[type="radio"] {
-    display: none;
-}
-
+.escala-container { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.escala-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+.escala-item input[type="radio"] { display: none; }
 .escala-label {
-    width: 50px;
-    height: 50px;
-    border: 2px solid #ddd;
+    width: 42px; height: 42px;
+    border: 1.5px solid #d1d5db; /* gray-300 */
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    font-weight: 600; color: #374151; /* gray-700 */
+    background: #fff;
     cursor: pointer;
-    font-weight: bold;
-    font-size: 1.1em;
-    transition: all 0.3s ease;
-    background: white;
-    color: #666;
 }
-
+.escala-label:hover { border-color: #4f46e5; }
 .escala-item input[type="radio"]:checked + .escala-label {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    border-color: #667eea;
-    transform: scale(1.1);
+    background: #4f46e5; color: #fff; border-color: #4f46e5;
 }
 
-.escala-label:hover {
-    border-color: #667eea;
-    transform: scale(1.05);
-}
-
-.escala-legenda {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 15px;
-    padding: 0 5px;
-    font-size: 0.85em;
-    color: #666;
-}
-
-.legenda-item {
-    text-align: center;
-}
+.escala-legenda { display: flex; justify-content: space-between; margin-top: 8px; font-size: 0.9rem; color: #6b7280; }
+.legenda-item { text-align: center; }
 
 .feedback-container {
-    background: #f8f9fa;
-    border-radius: 12px;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-left: 4px solid #28a745;
+    background: #f9fafb;
+    border-left: 4px solid #6b7280;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
 }
-
-.feedback-container label {
-    display: block;
-    font-size: 1.1em;
-    color: #333;
-    margin-bottom: 15px;
-    font-weight: 500;
-}
-
+.feedback-container label { display: block; margin-bottom: 8px; font-weight: 600; }
 .feedback-container textarea {
     width: 100%;
-    min-height: 120px;
-    padding: 15px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    font-size: 1em;
-    font-family: inherit;
-    resize: vertical;
-    transition: border-color 0.3s ease;
+    min-height: 110px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font: inherit;
 }
-
-.feedback-container textarea:focus {
-    outline: none;
-    border-color: #667eea;
-}
+.feedback-container textarea:focus { outline: none; border-color: #4f46e5; box-shadow: 0 0 0 3px rgba(79,70,229,0.15); }
 
 .botao-enviar {
     width: 100%;
-    padding: 18px;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 14px;
+    font-weight: 700;
+    color: #fff;
+    background: #4f46e5;
     border: none;
-    border-radius: 12px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
-
-.botao-enviar:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-}
-
-.botao-enviar:active {
-    transform: translateY(0);
-}
+.botao-enviar:hover { background: #4338ca; }
 
 .rodape {
     text-align: center;
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 2px solid #eee;
-    color: #666;
-    font-size: 0.95em;
+    margin-top: 20px;
+    padding-top: 14px;
+    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
+    font-size: 0.95rem;
 }
 
 .erro {
-    background: #f8d7da;
-    color: #721c24;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #f5c6cb;
+    background: #fef2f2; /* red-50 */
+    color: #991b1b; /* red-800 */
+    padding: 12px;
+    border-left: 4px solid #ef4444; /* red-500 */
+    border-radius: 6px;
+    margin-bottom: 14px;
 }
 
-/* Página de Agradecimento */
-.agradecimento-container {
-    text-align: center;
-    padding: 60px 40px;
-}
-
-.icone-sucesso {
-    font-size: 5em;
-    color: #28a745;
-    margin-bottom: 30px;
-}
-
-.agradecimento-container h1 {
-    color: #333;
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.agradecimento-container p {
-    color: #666;
-    font-size: 1.3em;
-    line-height: 1.6;
-    margin-bottom: 40px;
-}
-
-.botao-nova-avaliacao {
-    display: inline-block;
-    padding: 15px 40px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: white;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border: none;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.botao-nova-avaliacao:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-    .container {
-        padding: 25px;
-    }
-    
-    .header h1 {
-        font-size: 1.6em;
-    }
-    
-    .pergunta-texto {
-        font-size: 1.1em;
-    }
-    
-    .escala-label {
-        width: 40px;
-        height: 40px;
-        font-size: 1em;
-    }
-    
-    .escala-container {
-        gap: 5px;
-    }
-    
-    .agradecimento-container h1 {
-        font-size: 2em;
-    }
-    
-    .agradecimento-container p {
-        font-size: 1.1em;
-    }
-}
+.agradecimento-container { text-align: center; padding: 48px 16px; }
+.icone-sucesso { font-size: 3.2rem; color: #16a34a; margin-bottom: 18px; }
+.agradecimento-container h1 { font-size: 1.8rem; margin-bottom: 12px; }
+.agradecimento-container p { color: #6b7280; margin-bottom: 22px; }
+.botao-nova-avaliacao { display: inline-block; padding: 12px 18px; background: #4f46e5; color: #fff; border-radius: 8px; text-decoration: none; font-weight: 700; }
+.botao-nova-avaliacao:hover { background: #4338ca; }
 
 @media (max-width: 480px) {
-    body {
-        padding: 10px;
-    }
-    
-    .container {
-        padding: 20px;
-    }
-    
-    .header h1 {
-        font-size: 1.4em;
-    }
-    
-    .escala-label {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9em;
-    }
-    
-    .escala-legenda {
-        font-size: 0.75em;
-    }
+    body { padding: 12px; }
+    .container { padding: 16px; }
+    .escala-label { width: 38px; height: 38px; }
 }

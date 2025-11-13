@@ -1,6 +1,3 @@
-/**
- * JavaScript para validação e interatividade do formulário
- */
 
 document.addEventListener('DOMContentLoaded', function() {
     const form = document.getElementById('formularioAvaliacao');
@@ -14,14 +11,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-/**
- * Valida se todas as perguntas obrigatórias foram respondidas
- */
+
 function validarFormulario() {
     const perguntas = document.querySelectorAll('.pergunta-container');
     let todasRespondidas = true;
     
-    // Remove mensagens de erro anteriores
     removerMensagensErro();
     
     perguntas.forEach(function(pergunta) {
@@ -41,7 +35,6 @@ function validarFormulario() {
     });
     
     if (!todasRespondidas) {
-        // Scroll para a primeira pergunta não respondida
         const primeiroErro = document.querySelector('.erro-validacao');
         if (primeiroErro) {
             primeiroErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -53,9 +46,7 @@ function validarFormulario() {
     return todasRespondidas;
 }
 
-/**
- * Mostra mensagem de erro em uma pergunta
- */
+
 function mostrarErro(elemento, mensagem) {
     const erroDiv = document.createElement('div');
     erroDiv.className = 'erro-validacao';
@@ -67,9 +58,7 @@ function mostrarErro(elemento, mensagem) {
     elemento.style.borderLeftColor = '#dc3545';
 }
 
-/**
- * Remove todas as mensagens de erro
- */
+
 function removerMensagensErro() {
     const erros = document.querySelectorAll('.erro-validacao');
     erros.forEach(function(erro) {
@@ -78,19 +67,16 @@ function removerMensagensErro() {
     
     const perguntas = document.querySelectorAll('.pergunta-container');
     perguntas.forEach(function(pergunta) {
-        pergunta.style.borderLeftColor = '#667eea';
+        pergunta.style.borderLeftColor = '#ccc';
     });
 }
 
-/**
- * Adiciona feedback visual ao selecionar uma resposta
- */
+
 document.querySelectorAll('.escala-label').forEach(function(label) {
     label.addEventListener('click', function() {
         const container = this.closest('.pergunta-container');
-        container.style.borderLeftColor = '#28a745';
+        container.style.borderLeftColor = '#0a7a28';
         
-        // Remove mensagem de erro se existir
         const erro = container.querySelector('.erro-validacao');
         if (erro) {
             erro.remove();
