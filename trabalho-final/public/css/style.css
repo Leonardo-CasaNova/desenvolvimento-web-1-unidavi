@@ -1,0 +1,301 @@
+/**
+ * Estilos do Sistema de Avaliação
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    padding: 40px;
+    margin: 20px auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.header h1 {
+    color: #333;
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.formulario-avaliacao {
+    margin-bottom: 30px;
+}
+
+.pergunta-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid #667eea;
+}
+
+.pergunta-texto {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+.escala-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.escala-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    min-width: 50px;
+}
+
+.escala-item input[type="radio"] {
+    display: none;
+}
+
+.escala-label {
+    width: 50px;
+    height: 50px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: all 0.3s ease;
+    background: white;
+    color: #666;
+}
+
+.escala-item input[type="radio"]:checked + .escala-label {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+    transform: scale(1.1);
+}
+
+.escala-label:hover {
+    border-color: #667eea;
+    transform: scale(1.05);
+}
+
+.escala-legenda {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 0 5px;
+    font-size: 0.85em;
+    color: #666;
+}
+
+.legenda-item {
+    text-align: center;
+}
+
+.feedback-container {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-left: 4px solid #28a745;
+}
+
+.feedback-container label {
+    display: block;
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.feedback-container textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1em;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+.feedback-container textarea:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.botao-enviar {
+    width: 100%;
+    padding: 18px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.botao-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.botao-enviar:active {
+    transform: translateY(0);
+}
+
+.rodape {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #eee;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.erro {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border-left: 4px solid #f5c6cb;
+}
+
+/* Página de Agradecimento */
+.agradecimento-container {
+    text-align: center;
+    padding: 60px 40px;
+}
+
+.icone-sucesso {
+    font-size: 5em;
+    color: #28a745;
+    margin-bottom: 30px;
+}
+
+.agradecimento-container h1 {
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.agradecimento-container p {
+    color: #666;
+    font-size: 1.3em;
+    line-height: 1.6;
+    margin-bottom: 40px;
+}
+
+.botao-nova-avaliacao {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.botao-nova-avaliacao:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    
+    .header h1 {
+        font-size: 1.6em;
+    }
+    
+    .pergunta-texto {
+        font-size: 1.1em;
+    }
+    
+    .escala-label {
+        width: 40px;
+        height: 40px;
+        font-size: 1em;
+    }
+    
+    .escala-container {
+        gap: 5px;
+    }
+    
+    .agradecimento-container h1 {
+        font-size: 2em;
+    }
+    
+    .agradecimento-container p {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.4em;
+    }
+    
+    .escala-label {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9em;
+    }
+    
+    .escala-legenda {
+        font-size: 0.75em;
+    }
+}
