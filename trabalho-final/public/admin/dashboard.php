@@ -7,7 +7,6 @@ $conn = conectarBanco();
 $totalAval = 0;
 $mediaGeral = 0;
 $porDispositivo = array();
-$dias = array();
 if ($conn) {
     $r1 = pg_query($conn, "SELECT COUNT(*) AS t, AVG(resposta) AS m FROM avaliacoes");
     if ($r1) {
@@ -23,14 +22,6 @@ if ($conn) {
             $porDispositivo[] = $rw;
         }
     }
-    $r3 = pg_query($conn, "SELECT date(data_hora) AS dia, AVG(resposta) AS media, COUNT(*) AS total
-                           FROM avaliacoes GROUP BY date(data_hora) ORDER BY dia DESC LIMIT 7");
-    if ($r3) {
-        while ($rw = pg_fetch_assoc($r3)) {
-            $dias[] = $rw;
-        }
-        $dias = array_reverse($dias);
-    }
     pg_close($conn);
 }
 $mediasPerguntas = mediaPorPergunta();
@@ -39,8 +30,6 @@ $labelsPerguntas = array_map(fn($p) => $p['texto'], $mediasPerguntas);
 $dataPerguntas = array_map(fn($p) => $p['media'] ? round($p['media'], 2) : 0, $mediasPerguntas);
 $labelsDispositivos = array_map(fn($d) => $d['nome'], $porDispositivo);
 $dataDispositivos = array_map(fn($d) => $d['media'] ? round($d['media'], 2) : 0, $porDispositivo);
-$labelsDias = array_map(fn($d) => $d['dia'], $dias);
-$dataDias = array_map(fn($d) => $d['media'] ? round($d['media'], 2) : 0, $dias);
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -148,8 +137,6 @@ $dataDias = array_map(fn($d) => $d['media'] ? round($d['media'], 2) : 0, $dias);
         <canvas id="chartPerguntas" height="120"></canvas>
         <h3>Média por Dispositivo</h3>
         <canvas id="chartDispositivos" height="120"></canvas>
-        <h3>Evolução Últimos Dias</h3>
-        <canvas id="chartDias" height="120"></canvas>
     </div>
     <footer>Admin &copy; <?php echo date('Y'); ?></footer>
     <script>
@@ -157,8 +144,6 @@ $dataDias = array_map(fn($d) => $d['media'] ? round($d['media'], 2) : 0, $dias);
         const perguntasData = <?php echo json_encode($dataPerguntas); ?>;
         const dispositivosLabels = <?php echo json_encode($labelsDispositivos, JSON_UNESCAPED_UNICODE); ?>;
         const dispositivosData = <?php echo json_encode($dataDispositivos); ?>;
-        const diasLabels = <?php echo json_encode($labelsDias); ?>;
-        const diasData = <?php echo json_encode($dataDias); ?>;
 
         function barChart(id, labels, data, label) {
             new Chart(document.getElementById(id), {
@@ -208,9 +193,6 @@ $dataDias = array_map(fn($d) => $d['media'] ? round($d['media'], 2) : 0, $dias);
         }
         if (dispositivosLabels.length) {
             barChart('chartDispositivos', dispositivosLabels, dispositivosData, 'Média');
-        }
-        if (diasLabels.length) {
-            lineChart('chartDias', diasLabels, diasData, 'Média');
         }
     </script>
 </body>
