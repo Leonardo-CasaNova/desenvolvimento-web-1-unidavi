@@ -14,12 +14,14 @@ $escalaMaxima = ESCALA_MAXIMA;
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avaliação de Qualidade</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -34,29 +36,27 @@ $escalaMaxima = ESCALA_MAXIMA;
                         <div class="pergunta-texto">
                             <?php echo ($index + 1) . '. ' . htmlspecialchars($pergunta['texto']); ?>
                         </div>
-                        
+
                         <div class="escala-container">
-                            <?php 
+                            <?php
                             $escala = gerarEscala($escalaMaxima);
-                            foreach ($escala as $valor): 
+                            foreach ($escala as $valor):
                             ?>
                                 <div class="escala-item">
-                                    <input 
-                                        type="radio" 
-                                        id="pergunta_<?php echo $pergunta['id']; ?>_valor_<?php echo $valor; ?>" 
-                                        name="resposta[<?php echo $pergunta['id']; ?>]" 
-                                        value="<?php echo $valor; ?>"
-                                    >
-                                    <label 
-                                        class="escala-label" 
-                                        for="pergunta_<?php echo $pergunta['id']; ?>_valor_<?php echo $valor; ?>"
-                                    >
+                                    <input
+                                        type="radio"
+                                        id="pergunta_<?php echo $pergunta['id']; ?>_valor_<?php echo $valor; ?>"
+                                        name="resposta[<?php echo $pergunta['id']; ?>]"
+                                        value="<?php echo $valor; ?>">
+                                    <label
+                                        class="escala-label"
+                                        for="pergunta_<?php echo $pergunta['id']; ?>_valor_<?php echo $valor; ?>">
                                         <?php echo $valor; ?>
                                     </label>
                                 </div>
                             <?php endforeach; ?>
                         </div>
-                        
+
                         <div class="escala-legenda">
                             <div class="legenda-item">Muito Insatisfeito</div>
                             <div class="legenda-item">Completamente Satisfeito</div>
@@ -68,12 +68,11 @@ $escalaMaxima = ESCALA_MAXIMA;
                     <label for="feedback">
                         Tem algum comentário ou sugestão adicional? (Opcional)
                     </label>
-                    <textarea 
-                        id="feedback" 
-                        name="feedback" 
+                    <textarea
+                        id="feedback"
+                        name="feedback"
                         placeholder="Compartilhe sua experiência conosco..."
-                        maxlength="500"
-                    ></textarea>
+                        maxlength="500"></textarea>
                 </div>
             </div>
 
@@ -91,5 +90,5 @@ $escalaMaxima = ESCALA_MAXIMA;
 
     <script src="js/script.js"></script>
 </body>
-</html>
 
+</html>

@@ -1,85 +1,83 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("formularioAvaliacao");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('formularioAvaliacao');
-    
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            if (!validarFormulario()) {
-                e.preventDefault();
-            }
-        });
-    }
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      if (!validarFormulario()) {
+        e.preventDefault();
+      }
+    });
+  }
 });
 
-
 function validarFormulario() {
-    const perguntas = document.querySelectorAll('.pergunta-container');
-    let todasRespondidas = true;
-    
-    removerMensagensErro();
-    
-    perguntas.forEach(function(pergunta) {
-        const radios = pergunta.querySelectorAll('input[type="radio"]');
-        let respondida = false;
-        
-        radios.forEach(function(radio) {
-            if (radio.checked) {
-                respondida = true;
-            }
-        });
-        
-        if (!respondida) {
-            todasRespondidas = false;
-            mostrarErro(pergunta, 'Por favor, selecione uma resposta para esta pergunta.');
-        }
-    });
-    
-    if (!todasRespondidas) {
-        const primeiroErro = document.querySelector('.erro-validacao');
-        if (primeiroErro) {
-            primeiroErro.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-        
-        alert('Por favor, responda todas as perguntas antes de enviar.');
-    }
-    
-    return todasRespondidas;
-}
+  const perguntas = document.querySelectorAll(".pergunta-container");
+  let todasRespondidas = true;
 
+  removerMensagensErro();
+
+  perguntas.forEach(function (pergunta) {
+    const radios = pergunta.querySelectorAll('input[type="radio"]');
+    let respondida = false;
+
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        respondida = true;
+      }
+    });
+
+    if (!respondida) {
+      todasRespondidas = false;
+      mostrarErro(
+        pergunta,
+        "Por favor, selecione uma resposta para esta pergunta."
+      );
+    }
+  });
+
+  if (!todasRespondidas) {
+    const primeiroErro = document.querySelector(".erro-validacao");
+    if (primeiroErro) {
+      primeiroErro.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    alert("Por favor, responda todas as perguntas antes de enviar.");
+  }
+
+  return todasRespondidas;
+}
 
 function mostrarErro(elemento, mensagem) {
-    const erroDiv = document.createElement('div');
-    erroDiv.className = 'erro-validacao';
-    erroDiv.style.color = '#dc3545';
-    erroDiv.style.fontSize = '0.9em';
-    erroDiv.style.marginTop = '10px';
-    erroDiv.textContent = mensagem;
-    elemento.appendChild(erroDiv);
-    elemento.style.borderLeftColor = '#dc3545';
+  const erroDiv = document.createElement("div");
+  erroDiv.className = "erro-validacao";
+  erroDiv.style.color = "#dc3545";
+  erroDiv.style.fontSize = "0.9em";
+  erroDiv.style.marginTop = "10px";
+  erroDiv.textContent = mensagem;
+  elemento.appendChild(erroDiv);
+  elemento.style.borderLeftColor = "#dc3545";
 }
-
 
 function removerMensagensErro() {
-    const erros = document.querySelectorAll('.erro-validacao');
-    erros.forEach(function(erro) {
-        erro.remove();
-    });
-    
-    const perguntas = document.querySelectorAll('.pergunta-container');
-    perguntas.forEach(function(pergunta) {
-        pergunta.style.borderLeftColor = '#ccc';
-    });
+  const erros = document.querySelectorAll(".erro-validacao");
+  erros.forEach(function (erro) {
+    erro.remove();
+  });
+
+  const perguntas = document.querySelectorAll(".pergunta-container");
+  perguntas.forEach(function (pergunta) {
+    pergunta.style.borderLeftColor = "#ccc";
+  });
 }
 
+document.querySelectorAll(".escala-label").forEach(function (label) {
+  label.addEventListener("click", function () {
+    const container = this.closest(".pergunta-container");
+    container.style.borderLeftColor = "#0a7a28";
 
-document.querySelectorAll('.escala-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-        const container = this.closest('.pergunta-container');
-        container.style.borderLeftColor = '#0a7a28';
-        
-        const erro = container.querySelector('.erro-validacao');
-        if (erro) {
-            erro.remove();
-        }
-    });
+    const erro = container.querySelector(".erro-validacao");
+    if (erro) {
+      erro.remove();
+    }
+  });
 });

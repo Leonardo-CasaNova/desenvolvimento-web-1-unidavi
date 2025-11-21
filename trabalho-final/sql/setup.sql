@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS perguntas (
 -- Criar tabela de avaliações
 CREATE TABLE IF NOT EXISTS avaliacoes (
     id SERIAL PRIMARY KEY,
+    id_setor INTEGER REFERENCES dispositivos(id), -- setor avaliado (usando tabela dispositivos como setores)
     id_dispositivo INTEGER REFERENCES dispositivos(id),
     id_pergunta INTEGER REFERENCES perguntas(id),
     resposta INTEGER NOT NULL CHECK (resposta >= 0 AND resposta <= 10),
@@ -51,7 +52,6 @@ INSERT INTO perguntas (texto, ordem, status) VALUES
 ('Qual é o seu nível de satisfação com o tempo de espera?', 4, 'ativa'),
 ('Você recomendaria nossos serviços para outras pessoas?', 5, 'ativa');
 
--- Inserir usuário admin padrão (senha: admin123)
--- Senha: admin123 (hash MD5 simples para exemplo - em produção usar password_hash)
+-- Inserir usuário admin padrão (senha: admin123) usando password_hash gerado previamente
 INSERT INTO usuarios_admin (login, senha, nome) VALUES 
-('admin', MD5('admin123'), 'Administrador');
+('admin', '$2y$10$xpt8olDm1C/jNbZWLUh8cuCzBYsPHAljhl1AxG2eRNS/.0LArNAUq', 'Administrador');

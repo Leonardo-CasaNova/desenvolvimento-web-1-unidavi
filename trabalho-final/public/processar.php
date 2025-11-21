@@ -25,7 +25,7 @@ foreach ($respostas as $id_pergunta => $resposta) {
     } else {
         $sucesso = salvarAvaliacao($id_pergunta, $resposta);
     }
-    
+
     if (!$sucesso) {
         $sucessoTotal = false;
     }
@@ -36,4 +36,3 @@ if ($sucessoTotal) {
 } else {
     redirecionar('index.php?erro=2');
 }
-?>

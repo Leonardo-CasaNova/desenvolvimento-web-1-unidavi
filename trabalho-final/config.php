@@ -12,4 +12,3 @@ define('NOME_ESTABELECIMENTO', 'Nosso Estabelecimento');
 define('ESCALA_MAXIMA', 10);
 
 date_default_timezone_set('America/Sao_Paulo');
-?>

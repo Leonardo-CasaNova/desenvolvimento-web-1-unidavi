@@ -1,11 +1,13 @@
 <?php
 
-function redirecionar($url) {
+function redirecionar($url)
+{
     header("Location: $url");
     exit();
 }
 
-function gerarEscala($escalaMaxima = 10) {
+function gerarEscala($escalaMaxima = 10)
+{
     $escala = array();
     for ($i = 0; $i <= $escalaMaxima; $i++) {
         $escala[] = $i;
@@ -13,7 +15,8 @@ function gerarEscala($escalaMaxima = 10) {
     return $escala;
 }
 
-function getDescricaoNota($valor) {
+function getDescricaoNota($valor)
+{
     if ($valor >= 0 && $valor <= 3) {
         return "Muito Insatisfeito";
     } elseif ($valor >= 4 && $valor <= 6) {
@@ -24,4 +27,3 @@ function getDescricaoNota($valor) {
         return "Completamente Satisfeito";
     }
 }
-?>
