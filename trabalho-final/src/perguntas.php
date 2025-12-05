@@ -118,8 +118,8 @@ function mediaPorPergunta()
     $result = pg_query($conn, $sql);
     $dados = array();
     if ($result) {
-        while ($r = pg_fetch_assoc($result)) {
-            $dados[] = $r;
+        while ($linha_pergunta = pg_fetch_assoc($result)) {
+            $dados[] = $linha_pergunta;
         }
     }
     fecharBanco($conn);

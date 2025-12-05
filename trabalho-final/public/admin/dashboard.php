@@ -8,18 +8,18 @@ $totalAval = 0;
 $mediaGeral = 0;
 $porDispositivo = array();
 if ($conn) {
-    $r1 = pg_query($conn, "SELECT COUNT(*) AS t, AVG(resposta) AS m FROM avaliacoes");
-    if ($r1) {
-        $row = pg_fetch_assoc($r1);
+    $resultado_totais = pg_query($conn, "SELECT COUNT(*) AS t, AVG(resposta) AS m FROM avaliacoes");
+    if ($resultado_totais) {
+        $row = pg_fetch_assoc($resultado_totais);
         $totalAval = (int)$row['t'];
         $mediaGeral = $row['m'] !== null ? round((float)$row['m'], 2) : 0;
     }
-    $r2 = pg_query($conn, "SELECT d.nome, COUNT(a.id) AS total, AVG(a.resposta) AS media
+    $resultado_dispositivos = pg_query($conn, "SELECT d.nome, COUNT(a.id) AS total, AVG(a.resposta) AS media
                            FROM dispositivos d LEFT JOIN avaliacoes a ON a.id_dispositivo=d.id
                            GROUP BY d.id, d.nome ORDER BY d.id");
-    if ($r2) {
-        while ($rw = pg_fetch_assoc($r2)) {
-            $porDispositivo[] = $rw;
+    if ($resultado_dispositivos) {
+        while ($linha_dispositivo = pg_fetch_assoc($resultado_dispositivos)) {
+            $porDispositivo[] = $linha_dispositivo;
         }
     }
     pg_close($conn);

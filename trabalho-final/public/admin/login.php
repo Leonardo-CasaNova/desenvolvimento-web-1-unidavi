@@ -14,13 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($conn) {
             $loginEsc = pg_escape_string($conn, $login);
             // Buscar usuário por login
-            $q = "SELECT id, nome, senha FROM usuarios_admin WHERE login='$loginEsc' LIMIT 1";
-            $r = pg_query($conn, $q);
-            if ($r && pg_num_rows($r) === 1) {
-                $user = pg_fetch_assoc($r);
+            $query_usuario = "SELECT id, nome, senha FROM usuarios_admin WHERE login='$loginEsc' LIMIT 1";
+            $resultado_busca = pg_query($conn, $query_usuario);
+            if ($resultado_busca) {
+                $user = pg_fetch_assoc($resultado_busca);
                 $hash = $user['senha'];
-                // Compatibilidade: se hash parecer MD5 (32 chars hex), compara direto; caso contrário usa password_verify
-                $ok = (preg_match('/^[a-f0-9]{32}$/i', $hash)) ? ($hash === md5($senha)) : password_verify($senha, $hash);
+                $ok = password_verify($senha, $hash);
                 if ($ok) {
                     $_SESSION['admin_id'] = $user['id'];
                     $_SESSION['admin_nome'] = $user['nome'];
