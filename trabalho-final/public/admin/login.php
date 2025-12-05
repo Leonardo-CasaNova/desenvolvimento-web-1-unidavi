@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         .form input {
-            width: 100%;
+            width: 92%;
             padding: 10px;
             margin: 8px 0;
             border: 1px solid #ccc;
